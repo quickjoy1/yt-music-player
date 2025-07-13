@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>player</title>
+</head>
+        <header>
+        <h2 class="logo">Logo</h2>
+        <nav class="navigation">
+            <a href="index.html">Home</a>
+            <a href="#">About</a>
+            <a href="#">Servises</a>
+            <a href="#">Contacts</a>
+
+        </nav>
+    </header>
+<body id="bg-wrapper">
+    <div class="overlay">
+    <h1>🎶 Music Bot by Akshay</h1>
+    <input type="text" id="yt-url" placeholder="Song name or URL">
+    <button onclick="playSong()">Play</button>
+
+    <h3 id="title"></h3>
+    <audio id="player" controls></audio>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='play.css') }}">
+
+    </div>
+
+</body>
+
+</html>
