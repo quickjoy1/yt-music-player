@@ -5,6 +5,10 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
+@app.route('/')
+def index():
+    return 'YT Audio Backend is running. Use /get-audio POST to fetch audio.'
+
 def get_audio_url_and_video_id(query):
     ydl_opts = {
         'format': 'bestaudio[ext=m4a]/bestaudio/best',
@@ -21,7 +25,6 @@ def get_audio_url_and_video_id(query):
         video_id = info.get('id')
         return info['url'], info.get('title', 'Unknown'), video_id
 
-
 @app.route('/get-audio', methods=['POST'])
 def get_audio():
     data = request.get_json()
@@ -37,7 +40,3 @@ def get_audio():
         })
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)})
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
