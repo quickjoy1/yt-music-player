@@ -1,13 +1,17 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import yt_dlp
 from flask_cors import CORS
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static', static_folder='static', template_folder='templates')
 CORS(app)
 
 @app.route('/')
-def index():
-    return 'YT Audio Backend is running. Use /get-audio POST to fetch audio.'
+def home():
+    return render_template('index.html')  # your main page
+
+@app.route('/play')
+def play():
+    return render_template('play.html')  # your second page
 
 def get_audio_url_and_video_id(query):
     ydl_opts = {
@@ -40,3 +44,6 @@ def get_audio():
         })
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)})
+
+if __name__ == '__main__':
+    app.run(debug=True)
