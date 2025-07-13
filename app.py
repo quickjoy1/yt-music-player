@@ -9,7 +9,7 @@ CORS(app)
 def home():
     return render_template('index.html')  # your main page
 
-@app.route('/play')
+@app.route('/play.html')
 def play():
     return render_template('play.html')  # your second page
 
