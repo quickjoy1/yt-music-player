@@ -1,7 +1,7 @@
 function playSong() {
     const query = document.getElementById('yt-url').value;
 
-    fetch('https://fefa1a5a8326.ngrok-free.app/', {  // ✅ fixed this line
+    fetch('https://fefa1a5a8326.ngrok-free.app/get-audio', {  // ✅ fixed this line
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query: query })
